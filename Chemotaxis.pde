@@ -1,39 +1,36 @@
-
-void setup()   
+ //declare bacteria variables here   
+ void setup()   
  {     
  	//initialize bacteria variables here   
  	size(400,400);
- 	
-
+ 	frameRate(60);
  }   
  void draw()   
  {    
  	//move and show the bacteria   
- 	bob = new Bacteria(200,200);
- 	bob.show();
+ 	background(0);
+ 	Bacteria one = new Bacteria(200,200);
+ 	one.show();
  }  
  class Bacteria    
  {     
- 	int bacX; int bacY;//int bacSize; 
- 	Bacteria(int x, int y)
+ 	//lots of java!
+ 	int bX ; int bY; int bC;int bC2;int bC3;    
+ 	Bacteria(int x,int y)
  	{
- 		bacX = x;
- 		bacY = y;
- 		//int bacSize = 7;
+ 		bX = x;
+ 		bY = y;
+ 		bC = (int)(Math.random()*255);
+ 		bC2 = (int)(Math.random()*255);
+ 		bC3= (int)(Math.random()*255);
+ 	}
+ 	void walk()
+ 	{
+ 
  	}
  	void show()
  	{
- 		bacSize++;
- 		if (bacSize>10)
- 		{
- 			bacSize--;
- 		}
- 		if (bacSize<7)
- 		{
- 			bacSize++;
- 		}
-
- 		noStroke;
- 		ellipse(bacX,bacY,7,7);
+ 	fill(bC,bC2,bC3);
+ 	ellipse(bX,bY,10,10);
  	}
  }    
