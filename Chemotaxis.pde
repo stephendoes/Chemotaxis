@@ -1,27 +1,32 @@
  //declare bacteria variables here   
+ Bacteria [] colony;
  void setup()   
  {     
  	//initialize bacteria variables here   
  	size(400,400);
  	frameRate(10);
+	colony = new Bacteria[10];
+ 	for (int i = 0; i<colony.length; i++)
+ 	{
+ 		colony[i] = new Bacteria(200,200);
+ 	}
 
  } 
- Bacteria [] colony =
- {new Bacteria(), new Bacteria() };
- 
- Bacteria one = new Bacteria(200,200);
  void draw()   
  {    
  	//move and show the bacteria   
  	background(0);
+ 	for(int i = 0; i<colony.length; i++)
+  	{
+    	colony[i].walk();
+    	colony[i].show();
+  	}  
  	
- 	one.walk();
- 	one.show();
  }  
  class Bacteria    
  {     
  	//lots of java!
- 	int bX ; int bY; int bC;int bC2;int bC3;    
+ 	int bX ; int bY; int bC;int bC2;int bC3; int armSize;  
  	Bacteria(int x,int y)
  	{
  		bX = x;
@@ -29,10 +34,11 @@
  		bC = (int)(Math.random()*255);
  		bC2 = (int)(Math.random()*255);
  		bC3= (int)(Math.random()*255);
+ 		armSize = 10;
  	}
  	void walk()
  	{
- 		int direction = (int)(Math.random()*4);
+ 		int direction = (int)(Math.random()*8);
 
  		if (direction == 0)
  		{
@@ -42,14 +48,34 @@
 	 		{
 	 			bX = bX - 20;
 	 		}
-		 		else if (direction == 2)
-		 		{
-		 			bY = bY + 20;
-		 		}
-			 		else if (direction == 3)
-			 		{
-			 			bY = bY - 20;
-			 		}
+		 	else if (direction == 2)
+		 	{
+		 		bY = bY + 20;
+		 	}	
+			else if (direction == 3)
+			{
+			 	bY = bY - 20;
+			}
+			else if (direction == 4)
+			{
+				bX = bX + 20;
+			 	bY = bY + 20;
+			}
+			else if (direction == 5) 	
+			{
+				bX = bX - 20;
+			 	bY = bY + 20;
+			}
+			else if (direction == 6)
+			{
+				bX = bX + 20;
+			 	bY = bY - 20;
+			}	
+			else if (direction == 7)
+			{
+				bX = bX - 20;
+			 	bY = bY - 20;
+			}	
 
  		if (bY>390)
  		{
@@ -69,13 +95,30 @@
 	 		bX = bX + 20;
 	 	}
 
+	armSize++;
+ 	
+ 	if (armSize > 12)
+ 	{
+ 		armSize= 5;
+ 	}
+	
 
  		
  		
  	}
  	void show()
  	{
+ 
+
  	fill(bC,bC2,bC3);
- 	ellipse(bX,bY,30,30);
+ 	ellipse(bX,bY,20,20);
+ 	
+ 	ellipse(bX - 5, bY -5, armSize,armSize);
+ 	
+ 	ellipse(bX + 5, bY +5, armSize,armSize);
+ 	
+ 	ellipse(bX + 5, bY -5, armSize,armSize);
+ 	
+ 	ellipse(bX - 5, bY +5, armSize,armSize);
  	}
  }    
