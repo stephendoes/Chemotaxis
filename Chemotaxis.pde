@@ -5,10 +5,10 @@
  	//initialize bacteria variables here   
  	size(400,400);
  	frameRate(10);
-	colony = new Bacteria[10];
+	colony = new Bacteria[100];
  	for (int i = 0; i<colony.length; i++)
  	{
- 		colony[i] = new Bacteria(200,200);
+ 		colony[i] = new Bacteria(400,400);
  	}
 
  } 
@@ -26,7 +26,7 @@
  class Bacteria    
  {     
  	//lots of java!
- 	int bX ; int bY; int bC;int bC2;int bC3; int armSize;  
+ 	int bX ; int bY; int bC;int bC2;int bC3; int armSize; int bI; int bI2; int bI3;
  	Bacteria(int x,int y)
  	{
  		bX = x;
@@ -34,8 +34,12 @@
  		bC = (int)(Math.random()*255);
  		bC2 = (int)(Math.random()*255);
  		bC3= (int)(Math.random()*255);
- 		armSize = 10;
+ 		bI = (int)(Math.random()*255);
+ 		bI2 = (int)(Math.random()*255);
+ 		bI3 = (int)(Math.random()*255);
+ 		armSize = 6;
  	}
+
  	void walk()
  	{
  		int direction = (int)(Math.random()*8);
@@ -76,6 +80,7 @@
 				bX = bX - 20;
 			 	bY = bY - 20;
 			}	
+		
 
  		if (bY>390)
  		{
@@ -99,26 +104,21 @@
  	
  	if (armSize > 12)
  	{
- 		armSize= 5;
+ 		armSize= 4;
  	}
 	
-
- 		
  		
  	}
  	void show()
  	{
- 
-
  	fill(bC,bC2,bC3);
  	ellipse(bX,bY,20,20);
- 	
+ 	fill(bI, bI2, bI3);
  	ellipse(bX - 5, bY -5, armSize,armSize);
- 	
  	ellipse(bX + 5, bY +5, armSize,armSize);
- 	
  	ellipse(bX + 5, bY -5, armSize,armSize);
- 	
  	ellipse(bX - 5, bY +5, armSize,armSize);
  	}
+ 	
  }    
+	}
