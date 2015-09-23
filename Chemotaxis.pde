@@ -8,7 +8,7 @@
 	colony = new Bacteria[100];
  	for (int i = 0; i<colony.length; i++)
  	{
- 		colony[i] = new Bacteria(400,400);
+ 		colony[i] = new Bacteria(200,200);
  	}
 
  } 
@@ -118,7 +118,5 @@
  	ellipse(bX + 5, bY +5, armSize,armSize);
  	ellipse(bX + 5, bY -5, armSize,armSize);
  	ellipse(bX - 5, bY +5, armSize,armSize);
- 	}
- 	
- }    
+ 	} 	  
 	}
